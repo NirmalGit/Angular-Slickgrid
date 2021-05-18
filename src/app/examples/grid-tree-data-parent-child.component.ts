@@ -8,7 +8,7 @@ import {
   GridOption,
 } from './../modules/angular-slickgrid';
 
-const NB_ITEMS = 500;
+const NB_ITEMS = 10;
 
 @Component({
   templateUrl: './grid-tree-data-parent-child.component.html',
@@ -17,19 +17,8 @@ const NB_ITEMS = 500;
 })
 export class GridTreeDataParentChildComponent implements OnInit {
   title = 'Example 28: Tree Data <small>(from a flat dataset with <code>parentId</code> references)</small>';
-  subTitle = `<ul>
-    <li>It is assumed that your dataset will have Parent/Child references AND also Tree Level (indent) property.</li>
-    <ul>
-      <li>If you do not have the Tree Level (indent), you could call "convertParentChildArrayToHierarchicalView()" then call "convertHierarchicalViewToParentChildArray()"</li>
-      <li>You could also pass the result of "convertParentChildArrayToHierarchicalView()" to "dataset-hierarchical.bind" as defined in the next Hierarchical Example</li>
-    </ul>
-    <li><b>Styling - Material Theme</b></li>
-    <ul>
-      <li>The Material Theme was created with SASS and compiled in CSS (<a href="https://github.com/ghiscoding/Angular-Slickgrid/blob/master/src/app/modules/angular-slickgrid/styles/slickgrid-theme-material.scss" target="_blank">slickgrid-theme-material.scss</a>), you can override any of its SASS variables</li>
-      <li>We use a small subset of <a href="https://materialdesignicons.com/" target="_blank">Material Design Icons</a></li>
-      <li>you might need to refresh the page to clear the browser cache and see the correct theme</li>
-    </ul>
-  </ul>`;
+
+  subTitle = '';
 
   angularGrid!: AngularGridInstance;
   dataViewObj: any;
@@ -46,7 +35,9 @@ export class GridTreeDataParentChildComponent implements OnInit {
     this.defineGrid();
 
     // mock a dataset
+    debugger;
     this.dataset = this.loadData(NB_ITEMS);
+    console.log(this.dataset);
   }
 
   defineGrid() {
@@ -121,7 +112,7 @@ export class GridTreeDataParentChildComponent implements OnInit {
           if (dataContext.treeLevel > 0) {
             prefix = `<span class="mdi mdi-subdirectory-arrow-right mdi-v-align-sub color-se-secondary"></span>`;
           }
-          return `${prefix}<span class="bold">${value}</span> <span style="font-size:11px; margin-left: 15px;">(parentId: ${dataContext.parentId})</span>`;
+          return `${prefix}<span class="bold">${value} asdfadfdasf</span> <span style="font-size:11px; margin-left: 15px;">asdfafd (parentId: ${dataContext.parentId})</span>`;
         },
       },
       multiColumnSort: false, // multi-column sorting is not supported with Tree Data, so you need to disable it
